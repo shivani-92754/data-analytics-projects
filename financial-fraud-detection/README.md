@@ -1,61 +1,62 @@
 # Financial Fraud Detection — Anomaly Detection in Credit Card Transactions
 
-End-to-end fraud analysis on 389,000+ credit card transactions, built across
-Excel, SQL, Python, and Tableau to detect and explain anomalous
-(fraudulent) transaction patterns.
+A multi-tool analysis of credit card transaction data to identify fraud patterns, built for **SecureGuard Financial Solutions** (case-study context). The project uses **Excel, SQL, Python, and Tableau** to explore the same dataset from four different angles — statistical summaries, database querying, exploratory data analysis, and interactive visualization.
 
-## Tools
-Excel · SQL · Python (Pandas, Matplotlib, Seaborn) · Tableau
+## Problem Statement
+
+Design a fraud detection system to identify fraudulent credit card transactions in real time — detecting unauthorized transactions, unusual spending patterns, and fraudulent card usage to prevent financial losses for cardholders and institutions.
 
 ## Dataset
-389,002 transactions across 22 variables — transaction details, customer
-info, merchant info, location, amount, time, and the fraud label (`is_fraud`).
-Fraud rate: 0.58% (highly imbalanced).
 
-## What I did
+- **389,002** transactions
+- **22** variables (transaction amount, category, merchant, location, timestamp, cardholder demographics, fraud label, etc.)
+- **14** merchant categories, **693** unique merchants, **51** states
+- **0** missing values
+- **2,252** transactions flagged as fraudulent (**0.58%** fraud rate)
 
-**Excel**
-- Built statistical summaries, pivot reports, and correlation analysis to
-  get an initial view of transaction patterns and fraud distribution.
+## Tools & What Each One Did
 
-**SQL**
-- Created a schema and loaded transaction and location data into tables.
-- Wrote 13+ queries covering: total transaction counts, top 10 most frequent
-  merchants, average transaction amount by category, fraud count and fraud
-  percentage, a join across transaction and location tables to map
-  latitude/longitude, city with the highest population, and the average
-  transaction amount by gender and by day of week.
+### 📊 Excel
+- Statistical summaries (mean, std dev, skewness) on transaction amount and city population
+- Pivot table: transactions by gender × category
+- Top 3 states by transaction volume (TX, NY, PA)
+- Correlation check: transaction amount vs. city population (r = 0.0073 — no relationship)
+- Average transaction amount by job role (492 roles compared)
 
-**Python**
-- Cleaned the dataset (checked and handled missing values, verified no
-  duplicate transaction numbers).
-- Ran summary statistics, skewness, histograms and boxplots on numerical
-  variables — transaction amount was highly right-skewed.
-- Used the IQR method to flag 20,377 outliers in transaction amount and
-  72,813 outliers in city population.
-- Found `amt` (transaction amount) had the strongest correlation with fraud
-  (r ~ 0.21) — the single strongest numerical predictor in the dataset.
-- Found fraudulent transactions averaged ~$518 vs. ~$68 for non-fraudulent
-  ones — a large, meaningful gap.
-- Identified higher fraud rates in specific categories (shopping_net,
-  misc_net, grocery_pos) and analyzed monthly transaction trends.
-- Wrote a full EDA report summarizing data quality, distributions, fraud
-  patterns, and key predictive factors.
+### 🗄️ SQL
+- Schema design joining transaction and location data
+- Fraud volume & percentage query
+- Peak spending day analysis (`GROUP BY` day of week)
+- Fraud counts by merchant category
 
-**Tableau**
-- Built a 5-view interactive dashboard: a box-and-whisker view for
-  transaction amount, a geographic fraud map, time-series fraud trends,
-  and an inflation-adjusted calculated field.
+### 🐍 Python
+- Full EDA: distributions, missing-value checks, outlier detection (IQR method)
+- Skewness analysis (amount field is heavily right-skewed, skewness ≈ 40.3)
+- Correlation of all numeric features against the fraud target — transaction amount is the strongest predictor (r = 0.21)
+- Fraud rate by category (as a % of category volume, not just raw counts)
 
-## Key findings
-- Fraud rate: 0.58% of all transactions.
-- Transaction amount is the strongest fraud predictor (r ~ 0.21).
-- Fraudulent transactions average ~7.6x higher amount than legitimate ones.
-- 20,000+ outliers flagged in transaction amount via IQR analysis.
+### 📈 Tableau
+- **Box & Whisker Plot** — transaction amount spread by gender, with outliers
+- **Fraud Map** — geographic clustering of fraudulent transactions
+- **Time Series** — monthly transaction volume trend
+- **Inflation-Adjusted Amounts** — weekly transaction totals adjusted for purchasing power
 
-## Files
-- `Excel (Task)_...pdf` — Excel analysis and pivot summary
-- `SQL (Task)_...sql` — all SQL queries
-- `Python (Task)_...ipynb` — full EDA notebook with charts and written report
-- `Tableau (Task)_...twb` — Tableau workbook (5-view dashboard)
-- `Financial Fraud Detection...(Presentation).pdf` — summary presentation
+## Key Findings
+
+1. **Fraud is rare but severe** — just 0.58% of transactions are fraudulent, yet they average **$518** vs. **$68** for genuine transactions (7.6× higher).
+2. **Transaction amount is the strongest numeric predictor of fraud** (r = 0.21) — far ahead of location, age, or city population, all of which show near-zero correlation.
+3. **Digital-first categories carry the highest fraud rates** — `shopping_net` (1.63%), `misc_net` (1.50%), and `grocery_pos` (1.41%) — while routine in-person spending is comparatively safe.
+4. **The dataset is clean but heavily skewed** — zero missing values, but tens of thousands of legitimate outliers that a fraud model should learn from rather than discard.
+
+## Files in This Folder
+
+- `Financial Fraud Detection (Problem Statement).pdf` — case brief
+- `Excel (Task)...` — Excel workbook / exported PDF
+- `SQL (Task)...sql` — SQL schema and queries
+- `Python (Task)...ipynb` — Jupyter notebook with full EDA
+- `Tableau (Task)...twb` — Tableau workbook
+- `Financial_Fraud_Detection.pptx` — summary presentation
+
+## Presentation
+
+A full slide deck summarizing this project (problem, methodology, findings, and dashboard visuals) is included in this folder.
