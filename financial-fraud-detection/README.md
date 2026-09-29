@@ -37,6 +37,9 @@ SecureGuard Financial Solutions builds real-time fraud detection systems for the
 The data covers transaction details, customer info, merchant info, location, amount, time, and the target label `is_fraud`. It is **highly imbalanced**, which any future model would need to handle.
 
 ---
+## Problem Statement
+- Credit card fraud is rare (under 1% of transactions) but costly, and manual review of every transaction isn't feasible at scale. This project analyzes 389K+ transactions to identify the strongest predictors of fraud, so a business could flag suspicious activity automatically instead of reviewing everything.
+---
 
 ## 🔍 Analysis by Tool
 
