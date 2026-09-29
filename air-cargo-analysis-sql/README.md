@@ -26,12 +26,6 @@ The project covers four areas:
 | `passengers_on_flights` | 50 flight-passenger records (route, seat, class, travel date) |
 | `routes` | Origin, destination and distance for 32 flight routes |
 
-### ER diagram
-
-![ER Diagram](ER%20Digram%20_Air%20Cargo%20Analysis..png)
-
-The tables are connected through `customer_id`, `route_id` and `aircraft_id`.
-
 ---
 
 ## 📊 Dataset Snapshot
