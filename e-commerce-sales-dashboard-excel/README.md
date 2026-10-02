@@ -132,4 +132,4 @@ The smallest regions are Caribbean ($32,493) and Canada ($10,382).
 ## 👤 Author
 
 **Shivani Sharma**: Data Analyst | Generative AI
-📧 shivani92754@gmail.com · 🔗 [LinkedIn](https://linkedin.com/in/shivani-sharma-517636413) · 🌐 [Portfolio](https://your-portfolio-link)
+📧 shivani92754@gmail.com · 🔗 [LinkedIn](https://linkedin.com/in/shivani-sharma-517636413) · 🌐 [Portfolio](https://shivani-sharma-portfilio-com.netlify.app)
